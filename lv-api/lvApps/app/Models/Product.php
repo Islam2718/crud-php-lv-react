@@ -17,8 +17,7 @@ class Product extends Model
     protected $fillable = [        
         'name',
         'description',
-        'thumb',
-        
+        'thumb',        
         'buy_price',
         'sell_price',
         'unit',
@@ -29,5 +28,4 @@ class Product extends Model
     {
         return $this->hasMany(Stock::class);
     }
-
 }

@@ -4,11 +4,11 @@
 
 ## About Project
 
-Laravel 10 API Project:
+Laravel API Project:
 
 
 ## Commants
-
+    terminal/cli - location ./lvApps/ run bellow code
     -- composer install
     -- composer update
     -- php artisan migrate

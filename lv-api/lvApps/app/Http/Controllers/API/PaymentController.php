@@ -69,7 +69,7 @@ class PaymentController extends Controller
      */
 
     /**
-     * Store a newly created resource in storage.
+     * Store.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -89,7 +89,7 @@ class PaymentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display by ID.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
@@ -116,7 +116,7 @@ class PaymentController extends Controller
      */
 
     /**
-     * Update the specified resource in storage.
+     * Update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
@@ -152,7 +152,7 @@ class PaymentController extends Controller
     
 
     /**
-     * Remove the specified resource from storage.
+     * Remove.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response

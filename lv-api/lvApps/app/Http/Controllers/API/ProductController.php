@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,12 +23,8 @@ class ProductController extends Controller
         //     return response()->json(['message' => 'Unauthorized!'], 401);
         // }
     
-        // Retrieve the search key from the request header
-        // $searchKey = $request->header('search_key');
         $search_key = $request->input('search_key');
     
-        // Start building the query
-        // $query = Product::query();
 
         $query = Product::with(['stocks' => function ($query) {
             $query->selectRaw('product_id, SUM(quantity) as total_quantity')
@@ -60,26 +56,26 @@ class ProductController extends Controller
     
 
     /**
-     * Store a newly created resource in storage.
+     * Store
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request): Response
     {
-        if (Auth::guard('api')->check()) {
+        // if (Auth::guard('api')->check()) {
             $validatedData = $request->validate([
                 'name' => 'required',
             ]);
 
             $response = Product::create($request->all());
             return response(['data' => $response, 'message' => 'Created Successfully!', 'status'=> 201], 201);
-        }
-        return response(['data' => 'Unauthorized!'], 401);
+        // }
+        // return response(['data' => 'Unauthorized!'], 401);
     }
 
     /**
-     * Display the specified resource.
+     * Display.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
@@ -87,19 +83,19 @@ class ProductController extends Controller
     public function show($id): Response
     {
         //
-        if (Auth::guard('api')->check()) {
+        // if (Auth::guard('api')->check()) {
             $response = Product::find($id);
             if ($response) {
                 return response(['data' => $response, 'status' => 200], 200);
             } else {
                 return response(['data' => 'Not found!', 'status' => 404], 404);
             }
-        }
-        return response(['data' => 'Unauthorized!', 'status' => 401], 401);
+        // }
+        // return response(['data' => 'Unauthorized!', 'status' => 401], 401);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
@@ -108,14 +104,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         // Check if the user is authenticated
-        if (!Auth::guard('api')->check()) {
-            return response()->json(['message' => 'Unauthorized!'], 401);
-        }
+        // if (!Auth::guard('api')->check()) {
+        //     return response()->json(['message' => 'Unauthorized!'], 401);
+        // }
     
         // Validate the incoming request
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            // Add more fields as needed
+            'name' => 'required|string|max:255'
         ]);
     
         // Find the product by ID
@@ -134,7 +129,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
@@ -142,14 +137,14 @@ class ProductController extends Controller
     public function destroy($id): Response
     {
         //
-        if(Auth::guard('api')->check()){
+        // if(Auth::guard('api')->check()){
             $response = Product::find($id);
             if (! $response) {
                 return Response(['data' => 'Not found !.'], 404);
             }
             $response->delete();
             return Response(['data' => 'Deleted Successfully !.', 'status'=>200], 200);
-        }
-        return Response(['data' => 'Unauthorized!'], 401);
+        // }
+        // return Response(['data' => 'Unauthorized!'], 401);
     }
 }

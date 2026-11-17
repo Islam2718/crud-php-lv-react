@@ -7,14 +7,14 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\DB;
 
 
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display.
      *
      * @return \Illuminate\Http\Response
      */
@@ -68,17 +68,7 @@ class OrderController extends Controller
      }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -104,72 +94,30 @@ class OrderController extends Controller
         // save request 
         $responseOrder = Order::create($orderRequestArray);
         // var_dump($responseOrder); die();
-        // $orderItems = $request->input('order_items');
-        // $orderItemsArray = json_decode($orderItems, true); // Pass true to get an associative array
-
-        // if($responseOrder) {            
-        //     // save order items 
-        //     // $product_items = [1,2,3];
-
-        //     // if (is_array($orderItemsArray)) {
-        //     //     // Loop through the array
-        //     //     foreach ($orderItemsArray as $item) {
-        //     //         $orderItemsRequestArray = [
-        //     //             'buy_price' => $item['buy_price'],
-        //     //             'sell_price' => $item['sell_price'],
-        //     //             'quantity' => $item['quantity'],
-        //     //             'discount' => 0.00,
-        //     //             'total' => $item['total'],
-        //     //             'order_id' => $responseOrder->id,
-        //     //             'product_id' => $item['product_id'],
-        //     //             'user_id' => 1
-        //     //         ];
-        //     //         try{
-        //     //             $responseOrderItems = OrderItem::create($orderItemsRequestArray);
-        //     //         } catch(\Exception $e) {
-        //     //             return response(['data' => $e], 404);
-        //     //         }
-        //     //     }
-        //     // }
-        // }
-
         return response(['data' => $responseOrder, 'status' => 201], 201);
     }
     
-
     /**
-     * Display the specified resource.
+     * Display by ID.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Order  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id): Response
     {
         //
         // if (Auth::guard('api')->check()) {
-            $response = Order::with('orderItems')->find($id);
-            // $response = Order::with(['OrderItems'])->find($id);
+            $response = Order::with('orderItems')->find($id);            
             return response(['data' => $response, 'status' => 200], 200);
         // }
         // return response(['data' => 'Unauthorized!', 'status' => 401], 401);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit(Order $order)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
+     * Update.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Order  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id): Response
@@ -190,9 +138,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Order  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id): Response

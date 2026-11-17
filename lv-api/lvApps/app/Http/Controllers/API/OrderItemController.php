@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class OrderItemController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display.
      *
      * @return \Illuminate\Http\Response
      */
@@ -68,7 +68,7 @@ class OrderItemController extends Controller
     // }
 
     /**
-     * Store a newly created resource in storage.
+     * Store.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -87,7 +87,7 @@ class OrderItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display by ID.
      *
      * @param  \App\Models\OrderItem  $orderItem
      * @return \Illuminate\Http\Response
@@ -114,7 +114,7 @@ class OrderItemController extends Controller
     // }
 
     /**
-     * Update the specified resource in storage.
+     * Update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\OrderItem  $orderItem
@@ -138,7 +138,7 @@ class OrderItemController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove.
      *
      * @param  \App\Models\OrderItem  $orderItem
      * @return \Illuminate\Http\Response

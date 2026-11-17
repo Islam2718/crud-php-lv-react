@@ -1,10 +1,6 @@
-<p align="center">
-    <a href="#" target="_blank"><img src="logo.png" width="400" alt="Laravel Logo"></a>
-</p>
+## About Laravel API
 
-## About PhicsArt PointOS
-
-Laravel 10 and VueJs based web application with flutter MobileAPP:
+Laravel API Project
 
 
 ## Commants
@@ -17,12 +13,17 @@ Laravel 10 and VueJs based web application with flutter MobileAPP:
     -- php artisan serve
     -- php artisan passport:client --personal
 
+## API Documentation
+
+This project uses Laravel Scramble. The documentation UI is available at
+`/docs/api`, and its OpenAPI JSON is available at `/docs/api.json`. The project
+requires PHP 8.3 or later; documentation routes are local-only by default.
+
+If Laravel reports that the application key is missing, clear any stale cached
+configuration with `php artisan config:clear`. If `APP_KEY` is empty in `.env`,
+generate one with `php artisan key:generate`.
+
 
 ## Features
 
 [Composing...]
-
-
-## Developed By - 
-
-PhicsArt developer teams -  [PhicsArt.com](https://phicsart.com).

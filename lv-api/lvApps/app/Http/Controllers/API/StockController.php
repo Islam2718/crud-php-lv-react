@@ -14,16 +14,16 @@ use Illuminate\Support\Str;
 class StockController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request): Response
     {
         // Check if the user is authenticated using the 'api' guard
-        if (!Auth::guard('api')->check()) {
-            return response()->json(['message' => 'Unauthorized!'], 401);
-        }
+        // if (!Auth::guard('api')->check()) {
+        //     return response()->json(['message' => 'Unauthorized!'], 401);
+        // }
 
         $response = Stock::with(['product', 'user']);
         
@@ -70,7 +70,7 @@ class StockController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -89,24 +89,9 @@ class StockController extends Controller
         }
         return response(['data' => 'Unauthorized!'], 401);
     }
-    public function addBarcode($response){
-        $quantity = $response->quantity;
-        for($i = 0; $i < $quantity; $i++){   
-            $code1 = strtoupper(Str::random(3));
-            $code2 = strtoupper(Str::random(4));
-            Barcode::create([
-                'barcode' => 'R'.date('d').'-'.$code1.$code2,
-                'remarks'=>'',
-                'stock_id' => $response->id,
-                'product_id' => $response->product_id,
-                'user_id' => 1,
-                'status' => 0
-            ]);
-        }
-    }
 
     /**
-     * Display the specified resource.
+     * Display
      *
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
@@ -122,7 +107,7 @@ class StockController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Stock  $stock
@@ -135,7 +120,6 @@ class StockController extends Controller
             return Response(['data' => 'Unauthorized!'], 401);
         }
         // var_dump($request->all()); die(); 
-        // Validate the incoming request
         $validatedData = $request->validate([
             'quantity' => 'required|integer',
             'type' => 'required'
@@ -146,13 +130,13 @@ class StockController extends Controller
             return Response(['data' => 'Not found !.'], 404);
         }
         $response->update($request->all());
-        Barcode::where('stock_id', $id)->delete();
+        // Barcode::where('stock_id', $id)->delete();
         $this->addBarcode($response);
         return response()->json(['data' => $response, 'message' => 'Updated successfully!'], 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove.
      *
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
@@ -165,7 +149,7 @@ class StockController extends Controller
             if (! $response) {
                 return Response(['data' => 'Not found !.'], 404);
             }
-            Barcode::where('stock_id', $id)->delete();
+            // Barcode::where('stock_id', $id)->delete();
             $response->delete();            
             
             return Response(['data' => 'Deleted Successfully !.', 'status'=>200], 200);
