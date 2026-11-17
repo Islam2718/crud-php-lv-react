@@ -1,0 +1,10 @@
+/features:
+  get:
+    summary: "Get a list of features"
+    tags:
+      - Features
+    responses:
+      "200":
+        description: "Success"
+      "401":
+        description: "Unauthorized"
