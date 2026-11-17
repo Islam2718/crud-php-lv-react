@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f5f5;
+  color: #222;
+  font: 16px Arial, sans-serif;
+}
+
+a {
+  color: #245c46;
+}
+
+.header {
+  padding: 16px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  color: #222;
+  font-size: 21px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.container {
+  width: min(100% - 32px, 960px);
+  margin: 32px auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card,
+.panel {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.card h2 {
+  font-size: 19px;
+}
+
+.product-image {
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  background: #e7ece8;
+  color: #555;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 3px;
+  background: #286247;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.detail,
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.detail .product-image {
+  min-height: 300px;
+}
+
+.panel label:not(.radio) {
+  display: block;
+  margin: 14px 0 6px;
+}
+
+.panel input:not([type="radio"]):not([type="file"]),
+.panel textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.radio {
+  display: block;
+  margin: 12px 0;
+}
+
+.panel .button {
+  margin-top: 16px;
+}
+
+.right {
+  float: right;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item span {
+  color: #555;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 13px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #eee;
+}
+
+.product-form {
+  max-width: 600px;
+}
+
+.product-form .button {
+  margin-right: 12px;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 16px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .product-grid,
+  .detail,
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    min-height: 120px;
+  }
+
+  .page-heading {
+    gap: 12px;
+  }
+}
